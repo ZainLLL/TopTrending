@@ -45,23 +45,12 @@ def wb_parse(soup:BeautifulSoup,freq,urllist):
     # print(freq)
     # print(urllist)
 
-
-# def zh_parse(soup: BeautifulSoup, freq, urllist):
-#     items = soup.find_all('div','HotList-itemBody')
-#     # print(len(items))
-#     for s in items:
-#         key = s.find('div','HotList-itemTitle').text
-#         val = s.find('div', 'HotList-itemMetrics').text
-        
-#         val=val.split(' ')[0]
-#         freq[key] = val
-#     # print(freq)
-
 def zh_parse(soup: BeautifulSoup, freq, urllist):
-    table = soup.find('div','cc-cd-cb-l nano-content')
+    div = soup.find('div',id='node-6')
+    table = div.find('div','cc-cd-cb-l nano-content')
     # print(table.text)
     items = table.find_all('a')
-    print(len(items))
+    # print(len(items))
     for s in items:
         urllist.append(s.get('href'))
         key = s.find('span','t').text
@@ -102,7 +91,7 @@ def generat_img():
     #         if not word in stop_words and flag == 'n':
     #             commentlist.append(word)
     
-    mask_image = imread(r".\heart1.jpg")
+    mask_image = imread(r".\img\heart1.jpg")
     try:
         mask_image.shape
     except Exception as e:
