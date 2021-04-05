@@ -4,41 +4,49 @@ from window import Ui_MainWindow
 import info
 from PyQt5.QtWebEngineWidgets import QWebEngineView
 from PyQt5.QtCore import QUrl
+import qdarkstyle
+import datetime
 
+sites=['wb','zh','bd']
 freq={'wb': {}, 'zh': {}, 'bd': {}}
 urllist = {'wb': [], 'zh': [], 'bd': []}
+times = {'wb':str, 'zh':str, 'bd':str}
 
-class myForm(QMainWindow, Ui_MainWindow):
+class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        self.comboBox.currentIndexChanged.connect(self.selectionchange)
+        self.comboBox.currentIndexChanged.connect(self.sitechange)
         self.btn1.clicked.connect(self.btn1clicked)
         self.btn2.clicked.connect(self.btn2clicked)
         self.btn3.clicked.connect(self.btn3clicked)
-        # self.btn4.clicked.connect(self.btn4clicked)
 
-        self.wblist.itemDoubleClicked.connect(self.showBrowser)
-        self.zhlist.itemDoubleClicked.connect(self.showBrowser)
-        self.bdlist.itemDoubleClicked.connect(self.showBrowser)
+        self.lists = {'wb': self.wblist, 'zh': self.zhlist, 'bd': self.bdlist}
+        for site in sites:
+            self.lists[site].itemDoubleClicked.connect(self.showBrowser)
+            info.grab_info(site, freq[site], urllist[site])
+            time = datetime.datetime.now()
+            times[site]=time.strftime("%Y-%m-%d %H:%M")
+            self.listshow(site)
+
+        self.RefreshButton.clicked.connect(self.refresh)
         
-        self.listinit()
-
+        
     def showBrowser(self):
         self.browser=Newwindow()
         i = self.wblist.currentRow()
-        page=self.stackedWidget.currentWidget().objectName()
-        self.browser.UiInit(urllist[page][i])
+        site=self.stackedWidget.currentWidget().objectName()
+        self.browser.UiInit(urllist[site][i])
         self.browser.show()
 
-    def listinit(self):
-        self.wblist.addItems(freq['wb'].keys())
-        self.zhlist.addItems(freq['zh'].keys())
-        self.bdlist.addItems(freq['bd'].keys())
+    def listshow(self, site):
+        self.time_label.setText(times[site])
+        self.lists[site].addItems(freq[site].keys())
 
-    def selectionchange(self,i):
+    def sitechange(self,i):
         self.stackedWidget.setCurrentIndex(i)
-        # print(self.stackedWidget.currentWidget().objectName())
+        site=self.stackedWidget.currentWidget().objectName()
+        self.time_label.setText(times[site])
 
     def btn1clicked(self):
         self.Rpage.setCurrentIndex(0)
@@ -46,6 +54,16 @@ class myForm(QMainWindow, Ui_MainWindow):
         self.Rpage.setCurrentIndex(1)
     def btn3clicked(self):
         self.Rpage.setCurrentIndex(2)
+    
+    def refresh(self):
+        site=self.stackedWidget.currentWidget().objectName()
+        info.grab_info(site, freq[site], urllist[site])
+        time = datetime.datetime.now()
+        times[site]=time.strftime("%Y-%m-%d %H:%M:%S")
+        self.lists[site].clear()
+        self.listshow(site)
+        print("refresh success!")
+
 
 
 class Newwindow(QWebEngineView):
@@ -60,10 +78,8 @@ class Newwindow(QWebEngineView):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    for site in freq.keys():
-        info.grab_info(site,freq[site], urllist[site])
-    
-    # print(items)
-    w = myForm()
+
+    w = MainWindow()
+    app.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
     w.show()
     sys.exit(app.exec_())
