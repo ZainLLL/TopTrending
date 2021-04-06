@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>900</width>
-    <height>600</height>
+    <width>1200</width>
+    <height>800</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -22,10 +22,10 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>TopTrending</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="a.qrc">
+   <iconset resource="img.qrc">
     <normaloff>:/img/img/logo.ico</normaloff>
     <normalon>:/img/img/logo.ico</normalon>
     <disabledoff>:/img/img/logo.ico</disabledoff>
@@ -62,15 +62,21 @@
      <number>0</number>
     </property>
     <item>
-     <widget class="QFrame" name="frame">
+     <widget class="QFrame" name="Lpage">
       <property name="enabled">
        <bool>true</bool>
       </property>
       <property name="sizePolicy">
-       <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+       <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>240</width>
+        <height>0</height>
+       </size>
       </property>
       <property name="mouseTracking">
        <bool>false</bool>
@@ -91,6 +97,12 @@
        <property name="spacing">
         <number>16</number>
        </property>
+       <property name="leftMargin">
+        <number>6</number>
+       </property>
+       <property name="rightMargin">
+        <number>6</number>
+       </property>
        <item>
         <spacer name="verticalSpacer_4">
          <property name="orientation">
@@ -110,7 +122,7 @@
        <item>
         <widget class="QLabel" name="label">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -118,7 +130,7 @@
          <property name="minimumSize">
           <size>
            <width>0</width>
-           <height>0</height>
+           <height>45</height>
           </size>
          </property>
          <property name="maximumSize">
@@ -134,7 +146,7 @@
           <enum>Qt::PlainText</enum>
          </property>
          <property name="pixmap">
-          <pixmap resource="a.qrc">:/img/img/title_black.png</pixmap>
+          <pixmap resource="img.qrc">:/img/img/title_black.png</pixmap>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
@@ -150,6 +162,21 @@
           <enum>QFrame::Raised</enum>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_8">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
           <item>
            <spacer name="horizontalSpacer_12">
             <property name="orientation">
@@ -160,7 +187,7 @@
             </property>
             <property name="sizeHint" stdset="0">
              <size>
-              <width>10</width>
+              <width>20</width>
               <height>20</height>
              </size>
             </property>
@@ -176,15 +203,30 @@
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_4">
              <property name="spacing">
+              <number>50</number>
+             </property>
+             <property name="leftMargin">
+              <number>15</number>
+             </property>
+             <property name="topMargin">
+              <number>55</number>
+             </property>
+             <property name="rightMargin">
               <number>20</number>
              </property>
              <item>
               <widget class="QPushButton" name="btn1">
                <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>150</width>
+                 <height>50</height>
+                </size>
                </property>
                <property name="maximumSize">
                 <size>
@@ -206,10 +248,16 @@
              <item>
               <widget class="QPushButton" name="btn2">
                <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>50</height>
+                </size>
                </property>
                <property name="font">
                 <font>
@@ -225,29 +273,7 @@
              <item>
               <widget class="QPushButton" name="btn3">
                <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="font">
-                <font>
-                 <family>等距更纱黑体 SC</family>
-                 <pointsize>12</pointsize>
-                </font>
-               </property>
-               <property name="text">
-                <string>WordCloud</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="btn4">
-               <property name="enabled">
-                <bool>true</bool>
-               </property>
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
@@ -255,7 +281,7 @@
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>0</height>
+                 <height>50</height>
                 </size>
                </property>
                <property name="font">
@@ -265,7 +291,7 @@
                 </font>
                </property>
                <property name="text">
-                <string>Page4</string>
+                <string>WordCloud</string>
                </property>
               </widget>
              </item>
@@ -282,7 +308,7 @@
             </property>
             <property name="sizeHint" stdset="0">
              <size>
-              <width>10</width>
+              <width>20</width>
               <height>20</height>
              </size>
             </property>
@@ -316,7 +342,7 @@
        <enum>QFrame::Plain</enum>
       </property>
       <property name="lineWidth">
-       <number>1</number>
+       <number>2</number>
       </property>
       <property name="orientation">
        <enum>Qt::Vertical</enum>
@@ -332,7 +358,7 @@
        <enum>QFrame::Plain</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="IntroPage">
        <layout class="QGridLayout" name="gridLayout">
@@ -414,7 +440,7 @@
              </property>
              <property name="sizeHint" stdset="0">
               <size>
-               <width>20</width>
+               <width>10</width>
                <height>20</height>
               </size>
              </property>
@@ -430,79 +456,61 @@
              </property>
              <property name="minimumSize">
               <size>
-               <width>130</width>
-               <height>16</height>
+               <width>153</width>
+               <height>45</height>
               </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>50</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>微软雅黑</family>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="layoutDirection">
+              <enum>Qt::LeftToRight</enum>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: #455364;</string>
+             </property>
+             <property name="sizeAdjustPolicy">
+              <enum>QComboBox::AdjustToContents</enum>
+             </property>
+             <property name="duplicatesEnabled">
+              <bool>false</bool>
              </property>
              <item>
               <property name="text">
-               <string>微博热搜 </string>
+               <string> 微博热搜 </string>
               </property>
               <property name="icon">
-               <iconset resource="a.qrc">
+               <iconset resource="img.qrc">
                 <normaloff>:/img/img/weibo.png</normaloff>:/img/img/weibo.png</iconset>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>知乎热榜 </string>
+               <string> 知乎热榜 </string>
               </property>
               <property name="icon">
-               <iconset resource="a.qrc">
+               <iconset resource="img.qrc">
                 <normaloff>:/img/img/zhihu.png</normaloff>:/img/img/zhihu.png</iconset>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>百度热搜 </string>
+               <string> 百度热搜 </string>
               </property>
               <property name="icon">
-               <iconset resource="a.qrc">
+               <iconset resource="img.qrc">
                 <normaloff>:/img/img/baidu.png</normaloff>:/img/img/baidu.png</iconset>
               </property>
              </item>
-            </widget>
-           </item>
-           <item>
-            <spacer name="horizontalSpacer">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeType">
-              <enum>QSizePolicy::Expanding</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>120</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item>
-            <widget class="QLabel" name="label_6">
-             <property name="styleSheet">
-              <string notr="true">border: 1px solid #455364;border-radius: 4px;</string>
-             </property>
-             <property name="frameShape">
-              <enum>QFrame::StyledPanel</enum>
-             </property>
-             <property name="text">
-              <string>更新时间</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="time_label">
-             <property name="styleSheet">
-              <string notr="true">border: 1px solid #455364;border-radius: 4px;</string>
-             </property>
-             <property name="frameShape">
-              <enum>QFrame::StyledPanel</enum>
-             </property>
-             <property name="text">
-              <string>TextLabel</string>
-             </property>
             </widget>
            </item>
            <item>
@@ -535,12 +543,120 @@
                <height>20</height>
               </size>
              </property>
+             <property name="font">
+              <font>
+               <family>微软雅黑</family>
+              </font>
+             </property>
              <property name="styleSheet">
-              <string notr="true">background: #19232D;
-border: 1px solid #455364;border-radius: 4px;</string>
+              <string notr="true"/>
              </property>
              <property name="text">
               <string>刷新</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Expanding</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>120</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_6">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>100</width>
+               <height>45</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>微软雅黑</family>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">border: 1px solid #455364;border-radius: 4px;</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="text">
+              <string>更新时间</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="margin">
+              <number>5</number>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_14">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Fixed</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>10</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QLabel" name="time_label">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>180</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>微软雅黑</family>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">border: 1px solid #455364;border-radius: 4px;</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="text">
+              <string>TextLabel</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="margin">
+              <number>5</number>
              </property>
             </widget>
            </item>
@@ -569,7 +685,7 @@ border: 1px solid #455364;border-radius: 4px;</string>
            <enum>Qt::LeftToRight</enum>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="wb">
            <layout class="QHBoxLayout" name="horizontalLayout_5">
@@ -583,7 +699,7 @@ border: 1px solid #455364;border-radius: 4px;</string>
               </property>
               <property name="sizeHint" stdset="0">
                <size>
-                <width>20</width>
+                <width>10</width>
                 <height>20</height>
                </size>
               </property>
@@ -605,6 +721,9 @@ border: 1px solid #455364;border-radius: 4px;</string>
                 <width>300</width>
                 <height>0</height>
                </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QListView::item:hover:!selected {font-weight: bold;}</string>
               </property>
              </widget>
             </item>
@@ -659,7 +778,7 @@ border: 1px solid #455364;border-radius: 4px;</string>
                </size>
               </property>
               <property name="styleSheet">
-               <string notr="true">QListWidget::item:{padding-top:-2px; padding-bottom:1px;border: 1px solid red;}</string>
+               <string notr="true">QListWidget::item:{padding-top:-2px; padding-bottom:1px}</string>
               </property>
               <property name="frameShadow">
                <enum>QFrame::Sunken</enum>
@@ -671,10 +790,10 @@ border: 1px solid #455364;border-radius: 4px;</string>
                <bool>false</bool>
               </property>
               <property name="resizeMode">
-               <enum>QListView::Fixed</enum>
+               <enum>QListView::Adjust</enum>
               </property>
               <property name="spacing">
-               <number>40</number>
+               <number>0</number>
               </property>
               <property name="wordWrap">
                <bool>true</bool>
@@ -812,7 +931,7 @@ border: 1px solid #455364;border-radius: 4px;</string>
           <string>微博热搜 </string>
          </property>
          <property name="icon">
-          <iconset resource="a.qrc">
+          <iconset resource="img.qrc">
            <normaloff>:/img/img/weibo.png</normaloff>:/img/img/weibo.png</iconset>
          </property>
         </item>
@@ -821,7 +940,7 @@ border: 1px solid #455364;border-radius: 4px;</string>
           <string>知乎热榜 </string>
          </property>
          <property name="icon">
-          <iconset resource="a.qrc">
+          <iconset resource="img.qrc">
            <normaloff>:/img/img/zhihu.png</normaloff>:/img/img/zhihu.png</iconset>
          </property>
         </item>
@@ -830,25 +949,10 @@ border: 1px solid #455364;border-radius: 4px;</string>
           <string>百度热搜 </string>
          </property>
          <property name="icon">
-          <iconset resource="a.qrc">
+          <iconset resource="img.qrc">
            <normaloff>:/img/img/baidu.png</normaloff>:/img/img/baidu.png</iconset>
          </property>
         </item>
-       </widget>
-      </widget>
-      <widget class="QWidget" name="window4">
-       <widget class="QLabel" name="label_4">
-        <property name="geometry">
-         <rect>
-          <x>40</x>
-          <y>50</y>
-          <width>121</width>
-          <height>51</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>wait for adding</string>
-        </property>
        </widget>
       </widget>
      </widget>
@@ -857,7 +961,7 @@ border: 1px solid #455364;border-radius: 4px;</string>
   </widget>
  </widget>
  <resources>
-  <include location="a.qrc"/>
+  <include location="img.qrc"/>
  </resources>
  <connections/>
 </ui>

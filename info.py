@@ -55,6 +55,7 @@ def zh_parse(soup: BeautifulSoup, freq, urllist):
         urllist.append(s.get('href'))
         key = s.find('span','t').text
         val = s.find('span', 'e').text
+        val=val[:-4]+'w'
         freq[key]=val
     
 
