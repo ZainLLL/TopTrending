@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>874</width>
-    <height>488</height>
+    <width>1200</width>
+    <height>800</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -900,7 +900,7 @@
          </widget>
         </item>
         <item row="3" column="0">
-         <widget class="QPushButton" name="pushButton_2">
+         <widget class="QPushButton" name="geneButton">
           <property name="text">
            <string>generate 
  WordCloud</string>
@@ -921,7 +921,7 @@
          </spacer>
         </item>
         <item row="2" column="0">
-         <widget class="QComboBox" name="comboBox_2">
+         <widget class="QComboBox" name="comboBox2">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -964,9 +964,31 @@
          </widget>
         </item>
         <item row="1" column="1" rowspan="5" colspan="2">
-         <widget class="QLabel" name="label_5">
+         <widget class="QLabel" name="img_label">
+          <property name="font">
+           <font>
+            <pointsize>20</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border: 1px solid #455364;border-radius: 4px;</string>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
           <property name="text">
-           <string>image</string>
+           <string>点击生成
+
+热搜词云</string>
+          </property>
+          <property name="textFormat">
+           <enum>Qt::PlainText</enum>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
           </property>
          </widget>
         </item>

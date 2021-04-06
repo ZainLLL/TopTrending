@@ -36,6 +36,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.RefreshButton.clicked.connect(self.refresh)
         
+        # TODO:add the button function
+        self.geneButton.clicked.connect(self.PicGen)
+
+    def PicGen(self):
+        site = sites[self.comboBox2.currentIndex()]
+        if info.generat_img(freq[site]):
+            self.img_label.setPixmap(QPixmap("./img/wordcloud.jpg"))
+        else:
+            self.img_label.setText("生成失败，请重试")
+
+        
     def showBrowser(self):
         self.browser=Newwindow(self.comboBox.currentText())
         site = self.stackedWidget.currentWidget().objectName()

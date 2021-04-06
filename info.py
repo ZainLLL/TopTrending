@@ -80,7 +80,7 @@ Parsers = {
     'bd': bd_parse
 }
 
-def generat_img():
+def generat_img(freq):
     #載入stopword
     # stop_words = set(line.strip() for line in open('stopwords.txt', encoding='utf-8'))
     # commentlist = comment_subjects
@@ -99,12 +99,13 @@ def generat_img():
         print(e)
     # print(freq)
 
-    wordcloud = WordCloud(font_path='simhei.ttf', background_color="grey",mask=mask_image, color_func=random_color_func).generate_from_frequencies(freq)
+    wordcloud = WordCloud(font_path='simhei.ttf', background_color="#37414F",mask=mask_image, color_func=random_color_func).generate_from_frequencies(freq)
     # Display the generated image:
-    plt.imshow(wordcloud)
-    plt.axis("off")
-    wordcloud.to_file('wordcloud.jpg')
-    plt.show()
+    # plt.imshow(wordcloud)
+    # plt.axis("off")
+    wordcloud.to_file('./img/wordcloud.jpg')
+    # plt.show()
+    return True
 
 
 if __name__ == "__main__":
