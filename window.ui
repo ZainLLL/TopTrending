@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1200</width>
-    <height>800</height>
+    <width>874</width>
+    <height>488</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -878,82 +878,99 @@
        </layout>
       </widget>
       <widget class="QWidget" name="WCPage">
-       <widget class="QPushButton" name="pushButton_2">
-        <property name="geometry">
-         <rect>
-          <x>6</x>
-          <y>278</y>
-          <width>56</width>
-          <height>30</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>generate 
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="5" column="0">
+         <spacer name="verticalSpacer_5">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="0" column="0" colspan="3">
+         <widget class="QLabel" name="label_4">
+          <property name="text">
+           <string>generate wordcloud picture</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QPushButton" name="pushButton_2">
+          <property name="text">
+           <string>generate 
  WordCloud</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_5">
-        <property name="geometry">
-         <rect>
-          <x>466</x>
-          <y>6</y>
-          <width>16</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-       <widget class="QComboBox" name="comboBox_2">
-        <property name="geometry">
-         <rect>
-          <x>120</x>
-          <y>150</y>
-          <width>130</width>
-          <height>19</height>
-         </rect>
-        </property>
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>130</width>
-          <height>16</height>
-         </size>
-        </property>
-        <item>
-         <property name="text">
-          <string>微博热搜 </string>
-         </property>
-         <property name="icon">
-          <iconset resource="img.qrc">
-           <normaloff>:/img/img/weibo.png</normaloff>:/img/img/weibo.png</iconset>
-         </property>
+          </property>
+         </widget>
         </item>
-        <item>
-         <property name="text">
-          <string>知乎热榜 </string>
-         </property>
-         <property name="icon">
-          <iconset resource="img.qrc">
-           <normaloff>:/img/img/zhihu.png</normaloff>:/img/img/zhihu.png</iconset>
-         </property>
+        <item row="1" column="0">
+         <spacer name="verticalSpacer_3">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
         </item>
-        <item>
-         <property name="text">
-          <string>百度热搜 </string>
-         </property>
-         <property name="icon">
-          <iconset resource="img.qrc">
-           <normaloff>:/img/img/baidu.png</normaloff>:/img/img/baidu.png</iconset>
-         </property>
+        <item row="2" column="0">
+         <widget class="QComboBox" name="comboBox_2">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>130</width>
+            <height>16</height>
+           </size>
+          </property>
+          <item>
+           <property name="text">
+            <string>微博热搜 </string>
+           </property>
+           <property name="icon">
+            <iconset resource="img.qrc">
+             <normaloff>:/img/img/weibo.png</normaloff>:/img/img/weibo.png</iconset>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>知乎热榜 </string>
+           </property>
+           <property name="icon">
+            <iconset resource="img.qrc">
+             <normaloff>:/img/img/zhihu.png</normaloff>:/img/img/zhihu.png</iconset>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>百度热搜 </string>
+           </property>
+           <property name="icon">
+            <iconset resource="img.qrc">
+             <normaloff>:/img/img/baidu.png</normaloff>:/img/img/baidu.png</iconset>
+           </property>
+          </item>
+         </widget>
         </item>
-       </widget>
+        <item row="1" column="1" rowspan="5" colspan="2">
+         <widget class="QLabel" name="label_5">
+          <property name="text">
+           <string>image</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </widget>
      </widget>
     </item>
