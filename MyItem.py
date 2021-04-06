@@ -24,8 +24,8 @@ class Ui_Form(object):
         self.title.setObjectName("title")
         self.horizontalLayout.addWidget(self.title)
         self.value = QtWidgets.QLabel(Form)
-        self.value.setText("")
-        self.value.setPixmap(QtGui.QPixmap(":/img/img/title.png"))
+        # self.value.setText("")
+        # self.value.setPixmap(QtGui.QPixmap(":/img/img/title.png"))
         self.value.setObjectName("value")
         self.horizontalLayout.addWidget(self.value)
 
@@ -37,4 +37,4 @@ class Ui_Form(object):
         Form.setWindowTitle(_translate("Form", "Form"))
         self.num.setText(_translate("Form", "1"))
         self.title.setText(_translate("Form", "wzl"))
-import a_rc
+import img_rc

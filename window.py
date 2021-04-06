@@ -358,4 +358,4 @@ class Ui_MainWindow(object):
         self.comboBox_2.setItemText(1, _translate("MainWindow", "知乎热榜 "))
         self.comboBox_2.setItemText(2, _translate("MainWindow", "百度热搜 "))
         self.label_4.setText(_translate("MainWindow", "wait for adding"))
-import img
+import img_rc
