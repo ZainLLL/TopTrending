@@ -8,18 +8,14 @@ from wordcloud import WordCloud,random_color_func
 from bs4 import BeautifulSoup
 from fake_useragent import UserAgent
 
-freq = dict()
-urllist=list()
-
 Urls = {
-    'wb': 'https://s.weibo.com/top/summary/',
-    'zh': 'https://tophub.today/',
-    'bd': 'http://top.baidu.com/buzz?b=1&fr=topindex'
+    'sina': 'https://s.weibo.com/top/summary/',
+    'zhihu': 'https://tophub.today/',
+    'baidu': 'http://top.baidu.com/buzz?b=1&fr=topindex'
 }
 
 
-
-def grab_info(site,freq,urllist):
+def grab_info(site,lists):
     url = Urls[site]
     header = {'User-Agent': str(UserAgent().random)}   #Use fake headers
     r = requests.get(url, headers=header)
@@ -28,38 +24,35 @@ def grab_info(site,freq,urllist):
 
     soup = BeautifulSoup(r.content, 'lxml')
     parser = Parsers.get(site)
-    parser(soup,freq,urllist)
-    return urllist
+    parser(soup,lists['title'],lists['val'],lists['link'])
 
-def wb_parse(soup:BeautifulSoup,freq,urllist):
+def wb_parse(soup: BeautifulSoup, titles,vals,links):
     pattern = soup.find_all('td', 'td-02')  #解析对应内容
     for s in pattern:
         key = s.find('a')
         val = s.find('span')
-        urllist.append("https://s.weibo.com" + key.get('href'))
-        key= key.text
-        if val:
-            freq[key] = int(val.text)
-        else:
-            freq[key] = 6000000
-    # print(freq)
-    # print(urllist)
+        links.append("https://s.weibo.com" + key.get('href'))
+        key = key.text
+        titles.append(key)
+        vals.append(val.text if val else str(val))
 
-def zh_parse(soup: BeautifulSoup, freq, urllist):
+
+def zh_parse(soup: BeautifulSoup,titles,vals,links):
     div = soup.find('div',id='node-6')
     table = div.find('div','cc-cd-cb-l nano-content')
     # print(table.text)
     items = table.find_all('a')
-    # print(len(items))
     for s in items:
-        urllist.append(s.get('href'))
+        links.append(s.get('href'))
         key = s.find('span','t').text
         val = s.find('span', 'e').text
-        val=val[:-4]+'w'
-        freq[key]=val
+        if val[-3:] == '万热度':
+            val = val[:-4] + 'w'
+        titles.append(key)
+        vals.append(val)
     
 
-def bd_parse(soup:BeautifulSoup,freq,urllist):
+def bd_parse(soup:BeautifulSoup,titles,vals,links):
     tr = soup.find_all('tr')
     for s in tr:
         key = s.find('td', 'keyword')
@@ -67,17 +60,16 @@ def bd_parse(soup:BeautifulSoup,freq,urllist):
         if (key):
             key = key.find('a', 'list-title')
             val=val.find('span').text
-            urllist.append(key.get('href'))
+            links.append(key.get('href'))
             key = key.text
-            freq[key] = val
-    # print(freq)
-    # print(len(urllist))
+            titles.append(key)
+            vals.append(val)
 
 
 Parsers = {
-    'wb': wb_parse,
-    'zh': zh_parse,
-    'bd': bd_parse
+    'sina': wb_parse,
+    'zhihu': zh_parse,
+    'baidu': bd_parse
 }
 
 def generat_img(freq):
@@ -109,5 +101,13 @@ def generat_img(freq):
 
 
 if __name__ == "__main__":
-    grab_info('zh',freq,urllist)
-    # generat_img()
+    lists = dict()
+    lists['title'] = []
+    lists['val'] = []
+    lists['link'] = []
+    grab_info('sina', lists)
+    # vals=list(map(int,lists['val']))
+    vals = [int(x) if x.isdigit() else 1 for x in lists['val']]
+    print(vals)
+    freq=dict(zip(lists['title'],vals))
+    generat_img(freq)
