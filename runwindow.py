@@ -1,15 +1,13 @@
-import datetime
-import sys
-import shutil
-
-import qdarkstyle
+from datetime import datetime
+from sys import argv,exit
+from shutil import copy
+from qdarkstyle import load_stylesheet_pyqt5
 from PyQt5.QtCore import QUrl
 from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.QtWebEngineWidgets import QWebEngineView
 from PyQt5.QtWidgets import QApplication, QListWidgetItem, QMainWindow, QWidget ,QMessageBox
 
-import img_rc
-import info
+from info import grab_info, generat_img
 from MyItem import Ui_Form
 from window import Ui_MainWindow
 
@@ -37,8 +35,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.lists = {wb: self.wblist, zh: self.zhlist, bd: self.bdlist}
         for site in sites:
             self.lists[site].itemDoubleClicked.connect(self.showBrowser)
-            info.grab_info(site, infos[site])
-            time = datetime.datetime.now()
+            grab_info(site, infos[site])
+            time = datetime.now()
             times[site]=time.strftime("%Y-%m-%d %H:%M")
             self.listshow(site)
 
@@ -56,7 +54,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             vals = [x[:-1] for x in infos[site][v]]
             vals = [int(x) if x.isdigit() else 10 for x in infos[site][v]]
         freq=dict(zip(infos[site][t],vals))
-        if info.generat_img(freq):
+        if generat_img(freq):
             self.img_label.setPixmap(QPixmap("./img/wordcloud.jpg").scaled(self.img_label.sizeHint()))
         else:
             self.img_label.setText("生成失败，请重试")
@@ -68,17 +66,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         name = name.replace(' ', '-')
         name=site+name.replace(':','')
         dst_f = "./output/" + name + ".jpg"
-        shutil.copy(src_f, dst_f)
+        copy(src_f, dst_f)
         QMessageBox.about(self,"TopTrending","图片\n保存成功")
         # self.box.setWindowIcon(self.icon)
 
         
     def showBrowser(self):
-        self.browser=Newwindow(self.comboBox.currentText())
-        site = self.stackedWidget.currentWidget().objectName()
-        i = self.lists[site].currentRow()
-        self.browser.UiInit(infos[site][l][i])
-        self.browser.show()
+            self.browser=Newwindow(self.comboBox.currentText())
+            site = self.stackedWidget.currentWidget().objectName()
+            i = self.lists[site].currentRow()
+            self.browser.UiInit(infos[site][l][i])
+            self.browser.show()
 
     def listshow(self, site):
         self.time_label.setText(times[site])
@@ -114,12 +112,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     
     def refresh(self):
         site=self.stackedWidget.currentWidget().objectName()
-        info.grab_info(site, infos[site])
-        time = datetime.datetime.now()
+        grab_info(site, infos[site])
+        time = datetime.now()
         times[site]=time.strftime("%Y-%m-%d %H:%M")
         self.lists[site].clear()
         self.listshow(site)
-        print("refresh success!")
+        # print("refresh success!")
 
 
 class Newwindow(QWebEngineView):
@@ -133,7 +131,6 @@ class Newwindow(QWebEngineView):
     
     def UiInit(self,str='https://www.zhihu.com/billboard/'):
         self.load(QUrl(str))
-    
 
 class Form(QWidget, Ui_Form):
     def __init__(self,num,title,val):
@@ -145,9 +142,9 @@ class Form(QWidget, Ui_Form):
 
 
 if __name__ == '__main__':
-    app = QApplication(sys.argv)
+    app = QApplication(argv)
     w = MainWindow()
-    app.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
+    app.setStyleSheet(load_stylesheet_pyqt5())
     w.show()
     # print(w.size().height())
-    sys.exit(app.exec_())
+    exit(app.exec_())
