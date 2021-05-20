@@ -31,8 +31,9 @@ $ python ./runwindow.py
 ```
 
 ## Demonstration
-A gif and A png
 
+A shortcut of Trending page  
+![img](img/ui.jpg)
 
 ## License
 [MIT](LICENSE) ©ZainLLL
